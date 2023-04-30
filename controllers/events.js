@@ -3,14 +3,22 @@ const Event = require("../models/Event")
 
 const getEvents = async (req, res = response) => {
     
+   try {
     const events = await Event.find()
-        .populate('user', 'name')
-        // .populate('user', 'name password') // Only an example to get another property
+    .populate('user', 'name')
+    // .populate('user', 'name password') // Only an example to get another property
 
     res.json({
       ok: true,
       events,
     });
+   } catch (error) {
+      console.log('getEvents error', error)
+      res.status(500).json({
+        ok: false,
+        msg: 'Error getting all events'
+      })
+   }
 }
 
 const createEvent = async (req, res = response) => {

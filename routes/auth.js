@@ -25,9 +25,9 @@ const router = Router()
 router.post(
     '/new',
     [ // middlewares
-        check('name', 'el nombre es obligatorio').not().isEmpty(),
-        check('email', 'el correo es obligatorio').isEmail(),
-        check('password', 'el password debe tener al menos 6 carácteres').isLength({ min: 6}),
+        check('name', 'name is required').not().isEmpty(),
+        check('email', 'email is required').isEmail(),
+        check('password', 'password should have at least 6 characters').isLength({ min: 6}),
         fieldsValidator
     ],
     createUser
@@ -36,8 +36,8 @@ router.post(
 router.post(
     '/',
     [ // middlewares
-        check('email', 'el correo es obligatorio').isEmail(),
-        check('password', 'el password debe tener al menos 6 carácteres').isLength({ min: 6}),
+        check('email', 'email is required').isEmail(),
+        check('password', 'password should have at least 6 characters').isLength({ min: 6}),
         fieldsValidator
     ]
     , loginUser

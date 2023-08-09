@@ -5,15 +5,14 @@ const getEvents = async (req, res = response) => {
     
    try {
     const events = await Event.find()
-    .populate('user', 'name')
-    // .populate('user', 'name password') // Only an example to get another property
+                              .populate('user', 'name')
+                              // .populate('user', 'name password') // Only an example to get another property
 
     res.json({
       ok: true,
       events,
     });
    } catch (error) {
-      console.log('getEvents error', error)
       res.status(500).json({
         ok: false,
         msg: 'Error getting all events'
@@ -22,22 +21,19 @@ const getEvents = async (req, res = response) => {
 }
 
 const createEvent = async (req, res = response) => {
+  
+  const event = new Event(req.body)
+  
+  try {
     
-    const event = new Event(req.body)
-    console.log('qqqviendo ', req.uid)
+    event.user = req.uid
 
-    try {
-
-      event.user = req.uid
-
-      const savedEvent = await event.save()
-
-      console.log('viendo ', savedEvent)
+    const savedEvent = await event.save()
       
-      res.json({
-        ok: true,
-        event: savedEvent,
-      });
+    res.json({
+      ok: true,
+      event: savedEvent,
+    });
 
     } catch (error) {
       console.log('error', error)

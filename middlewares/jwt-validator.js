@@ -27,8 +27,6 @@ const validateJWT = ( req , res = response, next) => {
         })
     }
 
-    console.log('x-token', token)
-
     next()
 }
 

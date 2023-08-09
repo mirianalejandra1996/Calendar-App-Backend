@@ -4,7 +4,6 @@ const EventSchema = Schema({
     
     title: {
         type: String,
-        // required: true,
         require: true,
     },
     notes: {
@@ -27,7 +26,7 @@ const EventSchema = Schema({
 
 // Con esto podemos modificar nuestro documento antes de entrar a la BD,
 // como quitar X propiedades o sobreescribirlas (remover "__v" y reemplazar "_id" por "id")
-EventSchema.method('toJSON', function(){
+EventSchema.method('toJSON', function () {
     const {__v, _id, ...object} = this.toObject()
     object.id = _id
     return object

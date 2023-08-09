@@ -14,12 +14,11 @@ const createUser = async (req, res = response) => {
   try {
 
     let user = await User.findOne({email})
-    console.log('user', user)
 
     if (user) {
       return res.status(400).json({
         ok: false,
-        msg: 'Email not available'
+        msg: 'User already exist'
       })
     }
   
@@ -33,7 +32,6 @@ const createUser = async (req, res = response) => {
 
   // Generate a token
   const token = await generateJWT(user.uid, user.name)
-  console.log('tooken,', token)
 
   res.status(201).json({
     ok: true,
@@ -59,7 +57,6 @@ const loginUser = async (req, res = response) => {
   const { email, password } = req.body;
 
   try {
-    console.log('loginUser')
     const user = await User.findOne({email})
 
     if (!user) {
@@ -101,7 +98,7 @@ const loginUser = async (req, res = response) => {
 const revalidateToken = async (req, res = response) => {
 
   const {uid, name} = req
-
+  
   // Generate a token
   const token = await generateJWT(uid, name)
 

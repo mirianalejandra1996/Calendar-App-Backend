@@ -13,14 +13,15 @@ const { isDate } = require('../helpers/isDate');
 
 const router = Router()
 
-// All request have to pass to JWT validator
+// * All request have to pass to JWT validator
 // If I move this line below getEvents, then only getEvents will be public (no need JWT Validator) 
 router.use(validateJWT)
 
-
+// * Obtain events
 // router.get('/', validateJWT, getEvents)
 router.get('/', getEvents)
 
+// * Create a new event
 // router.post('/', validateJWT, createEvent)
 router.post('/', [
     check('title', 'Title is required').not().isEmpty(),
@@ -31,9 +32,11 @@ router.post('/', [
 ],
 createEvent)
 
+// * Update an Event
 // router.put('/:id', validateJWT, updateEvent)
 router.put('/:id', updateEvent)
 
+// * Remove an Event
 // router.delete('/:id', validateJWT, deleteEvent)
 router.delete('/:id', deleteEvent)
 

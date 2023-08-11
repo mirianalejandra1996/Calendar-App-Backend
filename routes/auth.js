@@ -13,15 +13,167 @@ const { fieldsValidator } = require('../middlewares/fields-validator')
 const { createUser, loginUser, revalidateToken } = require('../controllers/auth');
 const { validateJWT } = require('../middlewares/jwt-validator');
 
-
+//  Para crear un bloque de comentarios puedo escribir "/**"  y el se autocompleta
 
 // const router = express.Router()
 const router = Router()
 
 
-// router.post('/new', createUser);
+// * Create a user
 
-// dentro del "[]" habría una colección de middlewares
+/**
+ * @swagger
+ * /auth/new:
+ *   post:
+ *     summary: Create a new user
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             example:
+ *               name: John Doe
+ *               email: johndoe@example.com
+ *               password: password123
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *       400:
+ *         description: Bad request or user already exists
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 msg:
+ *                   type: string
+ *             example:
+ *               ok: false
+ *               msg: User already exist
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 msg:
+ *                   type: string
+ *             example:
+ *               ok: false
+ *               msg: Please contact with the admin
+ */
+
+
+/**
+ * @swagger
+ * /auth:
+ *   post:
+ *     summary: Login a user
+ *     tags: [User]
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             example:
+ *               email: johndoe@example.com
+ *               password: password123 
+ *     responses:
+ *       200:
+ *         description: User logged in successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *             example:
+ *               ok: true
+ *               uid: 12345
+ *               name: John Doe
+ *               token: eyJhbGciOiJIUzI1NiIsIn...
+ *       400:
+ *         description: Bad request or invalid credentials
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 msg:
+ *                   type: string
+ *             example:
+ *               ok: false
+ *               msg: Invalid password
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 msg:
+ *                   type: string
+ *             example:
+ *               ok: false
+ *               msg: Please contact with the admin
+ */
+
+
+/**
+ * @swagger
+ * /auth/renew:
+ *   get:
+ *     summary: Renovar un token de usuario
+ *     tags: [User]
+ *     security:
+ *       - x-token: []
+ *     responses:
+ *       200:
+ *         description: Token renovado exitosamente
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserResponse'
+ *       401:
+ *         description: No autorizado - Token inválido o no proporcionado
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 ok:
+ *                   type: boolean
+ *                 msg:
+ *                   type: string
+ */
+
+
 router.post(
     '/new',
     [ // middlewares
@@ -32,6 +184,7 @@ router.post(
     ],
     createUser
 );
+
 
 router.post(
     '/',

@@ -17,11 +17,13 @@ const router = Router()
 // If I move this line below getEvents, then only getEvents will be public (no need JWT Validator) 
 router.use(validateJWT)
 
+
 // * Obtain events
 // router.get('/', validateJWT, getEvents)
 router.get('/', getEvents)
 
 // * Create a new event
+
 // router.post('/', validateJWT, createEvent)
 router.post('/', [
     check('title', 'Title is required').not().isEmpty(),

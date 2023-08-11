@@ -5,6 +5,8 @@ const cors = require('cors')
 
 const app = express();
 
+const { swaggerDocs : V1SwaggerDocs } = require('./routes/swagger')
+
 // Base de datos
 dbConnection()
 
@@ -19,21 +21,14 @@ app.use( express.json() );
 app.use('/api/auth', require('./routes/auth') );
 app.use('/api/events', require('./routes/events') );
 
-app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html')
-})
 
+// Aquí podría colocar mi front
+// app.get('*', (req, res) => {
+//     res.sendFile(__dirname + '/public/index.html')
+// })
 
 // Escuchar peticiones
 app.listen( process.env.PORT , () => {
     console.log(`Server is running on port ${process.env.PORT }`);
+    V1SwaggerDocs(app, process.env.PORT )
 } );
-
-// Directorio Público
-// "use" es conocido como un middleware
-// un "middleware" es una función que se ejecuta en el momento en el que alguien
-// hace una petición a mi servidor
-// app.use( express.static('public') )
-
-// Rutas
-// app.use( express.static('public'));

@@ -18,10 +18,10 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:4000/api",
+        url: "https://mern-calendar-backend-k4kt.onrender.com/api",
       },
       {
-        url: "https://mern-calendar-backend-k4kt.onrender.com/api",
+        url: "http://localhost:4000/api",
       },
     ],
     tags: [

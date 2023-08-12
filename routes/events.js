@@ -18,9 +18,6 @@ const router = Router()
 router.use(validateJWT)
 
 
-// * Obtain events
-
-
 /**
  * @swagger
  * /events:
@@ -72,7 +69,6 @@ router.use(validateJWT)
  *               ok: false
  *               msg: Error getting all events
  */
-
 
 /**
  * @swagger
@@ -259,6 +255,8 @@ router.use(validateJWT)
  *     security:
  *       - x-token: []
  */
+
+// * Obtain events
 
 // router.get('/', validateJWT, getEvents)
 router.get('/', getEvents)

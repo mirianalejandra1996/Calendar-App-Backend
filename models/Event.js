@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const EventSchema = Schema({
-    
     title: {
         type: String,
         require: true,

@@ -89,7 +89,7 @@ const router = Router()
  *     summary: Login a user
  *     tags: [User]
  *     requestBody:
- *       required: false
+ *       required: true
  *       content:
  *         application/json:
  *           schema:
@@ -149,7 +149,7 @@ const router = Router()
  * @swagger
  * /auth/renew:
  *   get:
- *     summary: Renovar un token de usuario
+ *     summary: Renewal of a user's token
  *     tags: [User]
  *     security:
  *       - x-token: []

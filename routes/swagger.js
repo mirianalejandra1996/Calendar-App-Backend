@@ -11,7 +11,7 @@ const options = {
       title: "Calendar App API",
       version: "1.0.0",
       description:
-        "This is a sample Calendar Server based on the OpenAPI 3.0 specification.  You can find out more about\nSwagger at [https://swagger.io](https://swagger.io).\nYou can now help us improve the API whether it's by making changes to the definition itself or to the code.\nThat way, with time, we can improve the API in general, and expose some of the new features in OAS3.",
+        "Sample Calendar Server based on the OpenAPI 3.0 specification. This is a solo project designed to provide a practical example of API implementation. You can explore more about Swagger at [https://swagger.io](https://swagger.io).\nYou're welcome to contribute to the improvement of this API, whether it involves refining the definition itself or making changes to the code. Over time, we can enhance the API as a whole and showcase new features in OAS3._\n\nSome useful links:\n- [The Calendar App Backend repository](https://github.com/mirianalejandra1996/Calendar-backend)\n- [The Calendar App Frontend repository](https://github.com/mirianalejandra1996/Calendar-App-Frontend)",
       contact: {
         email: "mirianalejandra1996@gmail.com",
       },
@@ -38,24 +38,74 @@ const options = {
         schemas: {
           User: {
             type: "object",
+            required: ["name", "email", "password"], // Propiedades obligatorias
             properties: {
-            //   uid: {
-            //     type: "integer",
-            //     format: "int64",
-            //     example: 10
-            //   },
+              uid: {
+                type: "integer",
+                format: "int64",
+                example: "5fba80ac...",
+                description: "The ID of the user.",
+              },
               name: {
                 type: "string",
-                example: "John"
+                example: "John Doe",
+                description: "The name of the user.",
               },
               email: {
                 type: "string",
-                example: "johndoe@example.com"
+                example: "johndoe@example.com",
+                description: "The email of the user.",
               },
               password: {
                 type: "string",
-                example: "password123"
+                example: "password123",
+                description: "The password of the user.",
               },
+            },
+          },
+          Event: {
+            type: "object",
+            required: ["title", "notes", "start", "end"], // Propiedades obligatorias
+            properties: {
+              // id: {
+              //   type: "string",
+              //   description: "The ID of the event."
+              // },
+              title: {
+                type: "string",
+                description: "The title of the event."
+              },
+              notes: {
+                type: "string",
+                description: "Additional notes for the event."
+              },
+              start: {
+                type: "string",
+                format: "date-time",
+                description: "The start date and time of the event."
+              },
+              end: {
+                type: "string",
+                format: "date-time",
+                description: "The end date and time of the event."
+              },
+              // user: {
+              //   type: "object",
+              //   properties: {
+              //     _id: {
+              //       type: "integer",
+              //       format: "int64",
+              //       example: "5fba80ac..."
+              //     },
+              //     name: {
+              //       type: "string",
+              //       example: "John Doe"
+              //     },
+              //     },
+              // },
+              // user: {
+              //   "$ref": "#/components/schemas/User"
+              // }
             },
           },
           "ApiResponse": {

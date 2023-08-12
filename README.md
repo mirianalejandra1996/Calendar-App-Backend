@@ -1,8 +1,10 @@
-# Mi Increíble API de Calendario :calendar:
+# Calendar App API :calendar:
 
 ¡Hola! Te doy la bienvenida a la documentación de la API de Mi Increíble Calendario. Esta API está diseñada para ayudarte a administrar eventos en tu calendario. Estoy aprendiendo Node.js mientras construyo esto, ¡Agradecería mucho el feedback que me puedas proporcionar para mejorar! 
 
 Estoy utilizando tecnologías como Node.js, Express.js y MongoDB para desarrollar esta API. Espero que encuentres útil esta documentación y te animes a explorar y probar la API.
+
+Este API se integra con el frontend que también lo desarrollé en React js que se encuentra en otro repositorio [Link del repositorio del Frontend Calendar App](https://github.com/mirianalejandra1996/Calendar-App-Frontend).
 
 ## Características
 
@@ -19,7 +21,7 @@ Estoy utilizando tecnologías como Node.js, Express.js y MongoDB para desarrolla
 
 ### Instalación
 
-1. Clona este repositorio: `git clone https://github.com/mirianalejandra1996/Calendar-backend.git`
+1. Clona este repositorio: `git clone https://github.com/mirianalejandra1996/Calendar-App-Backend.git`
 2. Instala las dependencias: `npm install`
 3. Renombra `.env.template` a `.env` y configura tus variables de entorno.
 
